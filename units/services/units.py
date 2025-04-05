@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from uuid import UUID
 
+from units.exceptions import UnitNotFoundError
 from units.models import Unit
 
 
@@ -63,3 +64,10 @@ def get_units(*, group_id: int | None) -> list[UnitListItemDto]:
         result.append(unit_list_item)
 
     return result
+
+
+def get_unit_by_legacy_id(unit_legacy_id: int) -> Unit:
+    try:
+        return Unit.objects.get(legacy_id=unit_legacy_id)
+    except Unit.DoesNotExist:
+        raise UnitNotFoundError

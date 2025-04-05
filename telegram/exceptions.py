@@ -7,3 +7,9 @@ class UserNotFoundError(APIException):
     status_code = status.HTTP_404_NOT_FOUND
     default_code = 'user_not_found'
     default_detail = _("User is not found.")
+
+
+class TelegramChatNotFoundError(APIException):
+    status_code = status.HTTP_404_NOT_FOUND
+    default_code = 'telegram_chat_not_found'
+    default_detail = _("Telegram chat is not found.")

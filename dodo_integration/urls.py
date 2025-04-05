@@ -9,4 +9,8 @@ urlpatterns = [
         f'{settings.ROOT_PATH}v1/telegram/',
         include('telegram.urls'),
     ),
+    path(
+        f'{settings.ROOT_PATH}v1/reports/',
+        include('reports.urls'),
+    ),
 ]
