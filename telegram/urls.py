@@ -1,13 +1,25 @@
 from django.urls import path
 
 from telegram.views import (
-    TelegramUserRetrieveApi, TelegramUserRoleUpdateApi, TelegramUserUpsertApi,
+    TelegramChatUpsertApi,
+    TelegramUserRetrieveApi,
+    TelegramUserRoleUpdateApi,
+    TelegramUserUpsertApi,
 )
 
 
 app_name = 'telegram'
 urlpatterns = [
-    path(r'users/', TelegramUserUpsertApi.as_view(), name='user-create'),
+    path(
+        r'chats/',
+        TelegramChatUpsertApi.as_view(),
+        name='chat-create',
+    ),
+    path(
+        r'users/',
+        TelegramUserUpsertApi.as_view(),
+        name='user-create',
+    ),
     path(
         r'users/<int:user_id>/',
         TelegramUserRetrieveApi.as_view(),

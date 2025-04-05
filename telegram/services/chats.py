@@ -20,3 +20,18 @@ def get_telegram_chat_by_id(chat_id: int) -> TelegramChat:
         return TelegramChat.objects.get(id=chat_id)
     except TelegramChat.DoesNotExist:
         raise TelegramChatNotFoundError
+
+
+def upsert_telegram_chat(
+        *,
+        chat_id: int,
+        title: str | None,
+        username: str | None,
+) -> tuple[TelegramChat, bool]:
+    return TelegramChat.objects.update_or_create(
+        id=chat_id,
+        defaults={
+            'title': title,
+            'username': username,
+        }
+    )
