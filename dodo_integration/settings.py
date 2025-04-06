@@ -99,6 +99,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CSRF_TRUSTED_ORIGINS = env.list('DJANGO_CSRF_TRUSTED_ORIGINS')
+
 ROOT_PATH = env.str('DJANGO_ROOT_PATH', default='')
 if ROOT_PATH:
     ROOT_PATH = f"{ROOT_PATH.strip('/')}/"
