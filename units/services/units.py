@@ -36,19 +36,19 @@ def get_units(*, group_id: int | None) -> list[UnitListItemDto]:
         office_manager_account_id = None
         if unit.office_manager_account_cookies is not None:
             office_manager_account_id = (
-                unit.office_manager_account_cookies.account_id
+                unit.office_manager_account_cookies_id
             )
 
         shift_manager_account_id = None
         if unit.shift_manager_account_cookies is not None:
             shift_manager_account_id = (
-                unit.shift_manager_account_cookies.account_id
+                unit.shift_manager_account_cookies_id
             )
 
         dodo_is_api_account_id = None
         if unit.dodo_is_api_account_tokens is not None:
             dodo_is_api_account_id = (
-                unit.dodo_is_api_account_tokens.account_id
+                unit.dodo_is_api_account_tokens_id
             )
 
         unit_list_item = UnitListItemDto(

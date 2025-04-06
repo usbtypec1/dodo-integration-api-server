@@ -20,4 +20,4 @@ class UnitListApi(APIView):
         units = UnitListUseCase(group_id=group_id).execute()
 
         serializer = UnitListOutputSerializer(units, many=True)
-        return Response({'report_types': serializer.data})
+        return Response({'units': serializer.data})
