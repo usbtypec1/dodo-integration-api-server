@@ -13,4 +13,8 @@ urlpatterns = [
         f'{settings.ROOT_PATH}v1/reports/',
         include('reports.urls'),
     ),
+    path(
+        f'{settings.ROOT_PATH}v1/accounts/',
+        include('accounts.urls'),
+    ),
 ]
