@@ -14,7 +14,7 @@ __all__ = (
 
 
 def create_fernet() -> Fernet:
-    return Fernet(settings.FERNET_KEY)
+    return Fernet(settings.FERNET_KEY.encode(encoding="utf-8"))
 
 
 def encrypt_string(value: str) -> str:
