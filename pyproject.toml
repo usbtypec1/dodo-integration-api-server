@@ -10,4 +10,5 @@ dependencies = [
     "djangorestframework>=3.16.0",
     "drf-standardized-errors>=0.14.1",
     "fernet>=1.0.1",
+    "httpx>=0.28.1",
 ]
