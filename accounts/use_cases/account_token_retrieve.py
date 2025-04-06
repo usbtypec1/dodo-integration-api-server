@@ -18,6 +18,6 @@ class AccountTokenRetrieveUseCase:
         account_tokens = get_account_tokens_by_id(self.account_token_id)
         access_token = decrypt_string(account_tokens.encrypted_access_token)
         return AccountTokenRetrieveResultDto(
-            account_id=account_tokens.account_id,
+            account_id=account_tokens.id,
             access_token=access_token,
         )
