@@ -15,6 +15,7 @@ from units.models import Unit
 @dataclass(frozen=True, slots=True, kw_only=True)
 class ReportRouteListItemDto:
     report_type_id: str
+    report_type_name: str
     unit_id: UUID
     chat_id: int
 
@@ -68,7 +69,11 @@ def get_report_routes(
         take: int,
         skip: int,
 ) -> ReportRouteListDto:
-    routes = ReportRoute.objects.order_by('-created_at')
+    routes = (
+        ReportRoute.objects
+        .order_by('-created_at')
+        .select_related('report_type')
+    )
     if report_type_id is not None:
         routes = routes.filter(report_type_id=report_type_id)
     if unit_id is not None:
@@ -84,6 +89,7 @@ def get_report_routes(
         routes=[
             ReportRouteListItemDto(
                 report_type_id=route.report_type_id,
+                report_type_name=route.report_type.name,
                 unit_id=route.unit_id,
                 chat_id=route.chat_id,
             )

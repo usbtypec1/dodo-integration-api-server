@@ -12,6 +12,7 @@ class ReportRouteListInputSerializer(serializers.Serializer):
 class ReportRouteListItemSerializer(serializers.Serializer):
     unit_id = serializers.UUIDField()
     report_type_id = serializers.CharField()
+    report_type_name = serializers.CharField()
     chat_id = serializers.IntegerField()
 
 
