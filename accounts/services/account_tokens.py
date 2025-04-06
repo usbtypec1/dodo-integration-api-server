@@ -16,7 +16,7 @@ def get_account_tokens_by_id(account_token_id: str) -> AccountTokens:
 def update_account_tokens(account_tokens: AccountTokens) -> None:
     refresh_token = decrypt_string(account_tokens.encrypted_refresh_token)
 
-    url = 'https://auth.dodois.io/connect/token'
+    url = settings.DODO_IS_API_AUTH_URL
     request_data = {
         'client_id': settings.DODO_IS_API_CLIENT_ID,
         'client_secret': settings.DODO_IS_API_CLIENT_SECRET,
