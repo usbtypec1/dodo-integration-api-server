@@ -1,18 +1,19 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 
 from reports.models import ReportType, ReportTypeGroup, ReportRoute
 
 
 @admin.register(ReportType)
-class ReportTypeAdmin(admin.ModelAdmin):
+class ReportTypeAdmin(ImportExportModelAdmin):
     pass
 
 
 @admin.register(ReportRoute)
-class ReportRouteAdmin(admin.ModelAdmin):
+class ReportRouteAdmin(ImportExportModelAdmin):
     pass
 
 
 @admin.register(ReportTypeGroup)
-class ReportTypeGroupAdmin(admin.ModelAdmin):
+class ReportTypeGroupAdmin(ImportExportModelAdmin):
     pass
