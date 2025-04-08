@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 
 class UnitListInputSerializer(serializers.Serializer):
-    group_id = serializers.IntegerField(default=True)
+    group_id = serializers.IntegerField(default=None)
 
 
 class UnitListOutputSerializer(serializers.Serializer):
