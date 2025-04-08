@@ -34,4 +34,4 @@ class AccountTokens(models.Model):
         verbose_name_plural = _("Account tokens")
 
     def __str__(self):
-        return self.account.id
+        return self.id

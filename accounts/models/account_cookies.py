@@ -28,4 +28,4 @@ class AccountCookies(models.Model):
         verbose_name_plural = _("Account cookies")
 
     def __str__(self):
-        return self.account.id
+        return self.id

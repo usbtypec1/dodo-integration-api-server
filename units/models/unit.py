@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from accounts.models import AccountTokens
+from accounts.models import AccountCookies, AccountTokens
 from units.models.department import Department
 from units.models.unit_group import UnitGroup
 
@@ -33,7 +33,7 @@ class Unit(models.Model):
         verbose_name=_("Dodo IS API account tokens"),
     )
     office_manager_account_cookies = models.ForeignKey(
-        to=AccountTokens,
+        to=AccountCookies,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -41,7 +41,7 @@ class Unit(models.Model):
         verbose_name=_("Office manager account cookies"),
     )
     shift_manager_account_cookies = models.ForeignKey(
-        to=AccountTokens,
+        to=AccountCookies,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
