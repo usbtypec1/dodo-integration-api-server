@@ -26,14 +26,14 @@ class ReportRouteListCreateDeleteApi(APIView):
         data: dict = serializer.validated_data
         report_type_id: str | None = data["report_type_id"]
         unit_id: int | None = data["unit_id"]
-        chat_id: int | None = data["chat_id"]
+        chat_ids: list[int] | None = data["chat_ids"]
         take: int = data["take"]
         skip: int = data["skip"]
 
         report_routes = ReportRouteListUseCase(
             report_type_id=report_type_id,
             unit_id=unit_id,
-            chat_id=chat_id,
+            chat_ids=chat_ids,
             take=take,
             skip=skip,
         ).execute()

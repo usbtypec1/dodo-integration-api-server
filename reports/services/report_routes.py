@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 from dataclasses import dataclass
 from uuid import UUID
 
@@ -65,7 +66,7 @@ def get_report_routes(
         *,
         report_type_id: str | None,
         unit_id: UUID | None,
-        chat_id: int | None,
+        chat_ids: Iterable[int] | None,
         take: int,
         skip: int,
 ) -> ReportRouteListDto:
@@ -78,8 +79,8 @@ def get_report_routes(
         routes = routes.filter(report_type_id=report_type_id)
     if unit_id is not None:
         routes = routes.filter(unit_id=unit_id)
-    if chat_id is not None:
-        routes = routes.filter(chat_id=chat_id)
+    if chat_ids is not None:
+        routes = routes.filter(chat_id__in=chat_ids)
 
     routes = routes[skip:skip + take + 1]
     is_end_of_list_reached = len(routes) <= take

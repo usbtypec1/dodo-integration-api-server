@@ -4,7 +4,12 @@ from rest_framework import serializers
 class ReportRouteListInputSerializer(serializers.Serializer):
     unit_id = serializers.UUIDField(default=None)
     report_type_id = serializers.CharField(default=None)
-    chat_id = serializers.IntegerField(default=None)
+    chat_ids = serializers.ListField(
+        child=serializers.IntegerField(),
+        min_length=1,
+        max_length=100,
+        default=None,
+    )
     take = serializers.IntegerField(default=100, min_value=1, max_value=1000)
     skip = serializers.IntegerField(default=0, min_value=0)
 

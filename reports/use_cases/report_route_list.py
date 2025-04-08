@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 from dataclasses import dataclass
 from uuid import UUID
 
@@ -11,7 +12,7 @@ from reports.services.report_routes import (
 class ReportRouteListUseCase:
     report_type_id: str | None
     unit_id: UUID | None
-    chat_id: int | None
+    chat_ids: Iterable[int] | None
     take: int
     skip: int
 
@@ -19,7 +20,7 @@ class ReportRouteListUseCase:
         return get_report_routes(
             report_type_id=self.report_type_id,
             unit_id=self.unit_id,
-            chat_id=self.chat_id,
+            chat_ids=self.chat_ids,
             take=self.take,
             skip=self.skip,
         )
