@@ -3,6 +3,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from core.authentication import SpecificTokenAuthentication
 from telegram.serializers import (
     TelegramChatUpsertInputSerializer,
     TelegramChatUpsertOutputSerializer,
@@ -11,6 +12,7 @@ from telegram.use_cases import TelegramChatUpsertUseCase
 
 
 class TelegramChatUpsertApi(APIView):
+    authentication_classes = (SpecificTokenAuthentication,)
 
     def post(self, request: Request) -> Response:
         serializer = TelegramChatUpsertInputSerializer(data=request.data)

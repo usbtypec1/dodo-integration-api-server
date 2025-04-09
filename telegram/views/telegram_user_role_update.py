@@ -3,11 +3,13 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from core.authentication import SpecificTokenAuthentication
 from telegram.serializers import TelegramUserRoleUpdateInputSerializer
 from telegram.use_cases import TelegramUserRoleUpdateUseCase
 
 
 class TelegramUserRoleUpdateApi(APIView):
+    authentication_classes = (SpecificTokenAuthentication,)
 
     def patch(self, request: Request, user_id: int) -> Response:
         serializer = TelegramUserRoleUpdateInputSerializer(data=request.data)

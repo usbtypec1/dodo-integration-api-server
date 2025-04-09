@@ -4,9 +4,11 @@ from rest_framework.views import APIView
 
 from accounts.serializers import AccountTokenRetrieveOutputSerializer
 from accounts.use_cases import AccountTokenRetrieveUseCase
+from core.authentication import SpecificTokenAuthentication
 
 
 class AccountTokenRetrieveApi(APIView):
+    permission_classes = (SpecificTokenAuthentication,)
 
     def get(self, request: Request, account_token_id: str) -> Response:
         account_token = AccountTokenRetrieveUseCase(
